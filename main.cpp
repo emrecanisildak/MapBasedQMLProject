@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     MainWindow w;
     w.show();
 
-    qDebug()<<"Deneme commit";
+    qDebug()<<"Deneme commit 2";
 
     return a.exec();
 }
