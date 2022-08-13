@@ -31,8 +31,7 @@ void ERadarModel::removeRadarItem(int pId)
 
     if(itr != mData.end())
     {
-        int row = std::distance(mData.begin(), itr);
-        beginRemoveRows(QModelIndex(), row, row);
+        beginRemoveRows(QModelIndex(), std::distance(mData.begin(), itr), std::distance(mData.begin(), itr));
         mData.erase(itr);
         endRemoveRows();
     }
@@ -44,6 +43,7 @@ QVariant ERadarModel::data(const QModelIndex &index, int role) const
         return {};
 
     const ERadarItem &item = mData.at(index.row());
+
     if (role == RadarNameRole) return item.mName;
     else if (role == RadarIdRole) return item.mId;
     else if (role == LatitudeRole) return item.mCoordinate.latitude();

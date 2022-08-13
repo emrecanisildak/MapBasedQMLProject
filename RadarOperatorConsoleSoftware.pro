@@ -14,7 +14,9 @@ SOURCES += \
     communicator/etcpserver.cpp \
     controller/econtroller.cpp \
     gui/item/eabstractitem.cpp \
+    gui/item/eplotitem.cpp \
     gui/item/eradaritem.cpp \
+    gui/model/eplotmodel.cpp \
     gui/model/eradarmodel.cpp \
     main.cpp
 
@@ -22,7 +24,9 @@ HEADERS += \
     communicator/etcpserver.h \
     controller/econtroller.h \
     gui/item/eabstractitem.h \
+    gui/item/eplotitem.h \
     gui/item/eradaritem.h \
+    gui/model/eplotmodel.h \
     gui/model/eradarmodel.h
 
 FORMS +=

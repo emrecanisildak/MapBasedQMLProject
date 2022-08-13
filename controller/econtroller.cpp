@@ -1,27 +1,71 @@
 #include "econtroller.h"
 
 #include <QQmlContext>
-
-
+#include <QRandomGenerator>
+#include <QDebug>
+#include <QMouseEvent>
 EController::EController(QQmlApplicationEngine *qmlEngine, QObject* parent)
     : QObject(parent),
       mQmlEngine{qmlEngine}
 {
 
-    qmlRegisterType<ERadarModel>("com.eciescomany.radaritem", 1, 0, "RadarModel");
+    qmlRegisterType<EController>("com.eciescomany.controller", 1, 0, "Controller");
+    qmlRegisterType<ERadarModel>("com.eciescomany.radarmodel", 1, 0, "RadarModel");
+    qmlRegisterType<EPlotModel>("com.eciescomany.plotmodel", 1, 0, "PlotModel");
+
+
+
+    EPlotItem item2("",1,QGeoCoordinate(39.37,34.6),"asdasd");
+    mPlotModel.addPlot(item2);
+
+    EPlotItem item3("",1,QGeoCoordinate(39.37,35.0),"asdasd");
+    mPlotModel.addPlot(item3);
+
+
+    EPlotItem item4("",1,QGeoCoordinate(39.37,35.3),"asdasd");
+    mPlotModel.addPlot(item4);
+
+
+
+    EPlotItem item5("",1,QGeoCoordinate(39.57,35.0),"asdasd");
+    mPlotModel.addPlot(item5);
+
+
+
+    EPlotItem item6("",1,QGeoCoordinate(39.17,35.0),"asdasd");
+    mPlotModel.addPlot(item6);
+
+
+
+    mTestTimer.start(100);
 
     ERadarItem item1("Radar",1,QGeoCoordinate(39.32,34),"asdasd");
-    ERadarItem item2("Radar",2,QGeoCoordinate(34.32,35),"asdasd");
-    ERadarItem item3("Radar",3,QGeoCoordinate(36.32,37),"asdasd");
-    ERadarItem item4("Radar",4,QGeoCoordinate(38.32,45),"asdasd");
-
     mRadarModel.addRadarItem(item1);
-    mRadarModel.addRadarItem(item2);
-    mRadarModel.addRadarItem(item3);
-    mRadarModel.addRadarItem(item4);
 
+
+
+
+
+
+   mQmlEngine->rootContext()->setContextProperty("controller",  this);
    mQmlEngine->rootContext()->setContextProperty("radarModel", &mRadarModel);
+   mQmlEngine->rootContext()->setContextProperty("plotModel",  &mPlotModel);
+}
 
+void EController::onMapClicked(int pType, const QGeoCoordinate& pCoordinate)
+{
+    if(pType == Qt::MidButton)
+    {
+        qDebug()<<"Orta butona tiklandi";
+    }
 
+    else if(pType == Qt::LeftButton)
+    {
+        qDebug()<<"Left Butona Tiklandi";
+    }
+    else
+    {
+        qDebug()<<"Right Button Clicked";
+    }
 }
 

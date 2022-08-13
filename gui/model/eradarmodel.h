@@ -6,13 +6,6 @@
 #include <QHash>
 #include "gui/item/eradaritem.h"
 
-enum MyRoles {
-    RadarNameRole = Qt::UserRole + 1,
-    RadarIdRole,
-    LatitudeRole,
-    LongitudeRole,
-    SourcePathRole,
-};
 
 
 
@@ -20,6 +13,14 @@ class ERadarModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum MyRoles {
+        RadarNameRole = Qt::UserRole + 1,
+        RadarIdRole,
+        LatitudeRole,
+        LongitudeRole,
+        SourcePathRole,
+    };
+
     ERadarModel(QObject* parent = nullptr);
 
     int                    rowCount(const QModelIndex& parent = QModelIndex()) const override;

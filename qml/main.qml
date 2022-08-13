@@ -7,65 +7,127 @@ import QtQml 2.12
 
 Window {
     id:mainWindow
-    width: 1920
-    height: 1080
+    width: 1000
+    height: 500
     visible: true
     visibility: "Windowed"    // Windowed  - FullScreen
     title: qsTr("Offline Map Example")
+    onXChanged: map.pan(100,200)
+
+
 
     Plugin {
-           id: plugin_osm
+        id: plugin_osm
+        preferred: "osm"
+        PluginParameter {
+            name: "osm.mapping.custom.host"
+            value: "http://localhost:4000/"
+        }
+        PluginParameter {
+            name: "osm.mapping.providersrepository.disabled"
+            value: true
+        }
 
-           preferred: "osm"
+        PluginParameter {
+            name: "osm.mapping.cache.disk.size"
+            value: 99999999
+        }
 
-           PluginParameter {
-               name: "osm.mapping.custom.host"
-               value: "http://localhost:4000/"
-           }
-           /*disable retrieval of the providers information from the remote repository.
-             If this parameter is not set to true (as shown here), then while offline,
-             network errors will be generated at run time*/
+        PluginParameter {
+            name: "osm.mapping.cache.directory"
+            value: "cache"
+        }
 
-           PluginParameter {
-               name: "osm.mapping.providersrepository.disabled"
-               value: true
-           }
+    }
+    Map {
+        id: map
+        anchors.fill: parent
+        plugin: plugin_osm
+        zoomLevel: 8
+        minimumZoomLevel: 0
+        maximumZoomLevel: 15
+        center: QtPositioning.coordinate(39,34)
+        activeMapType: supportedMapTypes[supportedMapTypes.length - 1]
 
-           PluginParameter {
-               name: "osm.mapping.cache.disk.size"
-               value: "5000"
-           }
+        MapItemView {
+            model: radarModel
+            delegate:
+                MapCircle{
+                radius: 10000
+                color: "#808000"
+                z:10
+                center {
+                    latitude: latitude
+                    longitude: longitude
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: { parent.color = 'red' }
+                }
+            } // Radar Item
+        } // End Radar Model
 
-           PluginParameter {
-               name: "osm.mapping.cache.directory"
-               value: "cache"
-           }
+        MapItemView {
+            model: radarModel
+            delegate:
+                MapCircle{
+                radius: 100000
+                color: "#556B2F"
+                opacity:0.6
+                z:0
+                center {
+                    latitude: latitude
+                    longitude: longitude
+                }
+            } // Radar Item
+        } // End Radar Model
 
-       }
+        // PLOT MODEL
+        MapItemView {
+            model: plotModel
+            delegate:
+                MapCircle{
+                radius: 3000
+                color: "#FFFF00"
+                z:15
+                center {
+                    latitude: latitude
+                    longitude: longitude
+                }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: { parent.color = 'red' }
+                }
+            } // PLOT Item
+        } // End PLOT Model
 
-       Map {
-           id: map
+        MapPolyline {
+            id: ruler
+            line.color: 'green'
+            line.width: 3
+        }// Ruler Model
 
-           anchors.fill: parent
-           plugin: plugin_osm
-           zoomLevel: 8
-           minimumZoomLevel: 0
-           maximumZoomLevel: 15
-           center: QtPositioning.coordinate(39,34)
-           activeMapType: supportedMapTypes[supportedMapTypes.length - 1]
+        Rectangle{
+            id:infoText
+            anchors.bottom: map.bottom
+            anchors.left: map.left
+            color: "black"
+            width:map.width/10
+            height:map.height/25
+            TextArea{
+                text:"Eci"
+            }
+        }
 
-           MapItemView {
-               model: radarModel
-               delegate:
-                   MapCircle{
-                       radius: 30000
-                       color:"pink"
-                       center {
-                           latitude: latitude
-                           longitude: longitude
-                       }
-                   }
-               }
-           }
+        MouseArea {
+            anchors.fill: map
+            acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MidButton
+           // onMouseXChanged:
+            onClicked: (mouse)=> {
+                           controller.onMapClicked(mouse.button,map.toCoordinate(Qt.point(mouse.x,mouse.y)))
 
-}
+                       }// End Mouse area on Clicked
+        }// End mousea area map
+    }// Map End
+
+}// Window end
