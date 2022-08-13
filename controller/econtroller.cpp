@@ -54,18 +54,11 @@ EController::EController(QQmlApplicationEngine *qmlEngine, QObject* parent)
 
 void EController::onMapClicked(int pType, const QGeoCoordinate& pCoordinate)
 {
-    if(pType == Qt::MidButton)
-    {
-        qDebug()<<"Orta butona tiklandi";
-    }
+    mMapController.onMapClicked(pType,pCoordinate);
+}
 
-    else if(pType == Qt::LeftButton)
-    {
-        qDebug()<<"Left Butona Tiklandi";
-    }
-    else
-    {
-        qDebug()<<"Right Button Clicked";
-    }
+void EController::onMapCursorPositionChanged(const QGeoCoordinate &pCoordinate)
+{
+    mMapController.onMapMouseCursorPositionChanged(pCoordinate);
 }
 

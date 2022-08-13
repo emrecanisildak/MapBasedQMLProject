@@ -13,6 +13,8 @@ CONFIG += c++17
 SOURCES += \
     communicator/etcpserver.cpp \
     controller/econtroller.cpp \
+    controller/emapcontroller.cpp \
+    controller/eradarcontroller.cpp \
     gui/item/eabstractitem.cpp \
     gui/item/eplotitem.cpp \
     gui/item/eradaritem.cpp \
@@ -23,6 +25,8 @@ SOURCES += \
 HEADERS += \
     communicator/etcpserver.h \
     controller/econtroller.h \
+    controller/emapcontroller.h \
+    controller/eradarcontroller.h \
     gui/item/eabstractitem.h \
     gui/item/eplotitem.h \
     gui/item/eradaritem.h \

@@ -1,5 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
+        <file>qml/RadarRangeModel.qml</file>
+        <file>qml/PlotModel.qml</file>
+        <file>qml/CoordinateInfoBox.qml</file>
+        <file>qml/MapMouseArea.qml</file>
+        <file>qml/Ruler.qml</file>
+        <file>qml/RadarModel.qml</file>
+        <file>qml/RightMenu.qml</file>
+        <file>qml/RightMenuCustomButton.qml</file>
+        <file>qml/TopMenu.qml</file>
     </qresource>
 </RCC>

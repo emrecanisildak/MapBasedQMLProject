@@ -2,14 +2,11 @@
 #define ECONTROLLER_H
 
 #define TEST
-
-
 #include <QObject>
 #include "gui/model/eradarmodel.h"
 #include "gui/model/eplotmodel.h"
 #include <QQmlApplicationEngine>
-
-
+#include "emapcontroller.h"
 #include <QTimer>
 
 
@@ -21,18 +18,15 @@ public:
 
 public slots:
     void onMapClicked(int pType, const QGeoCoordinate& cordinate);
+    void onMapCursorPositionChanged(const QGeoCoordinate& pCoordinate);
 
 
 private:
+    EMapController         mMapController;
     QQmlApplicationEngine* mQmlEngine;
     ERadarModel            mRadarModel;
     EPlotModel             mPlotModel;
-
     QTimer                 mTestTimer;
-
-
-
-
 
 
 };

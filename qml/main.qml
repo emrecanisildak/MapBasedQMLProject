@@ -11,11 +11,8 @@ Window {
     height: 500
     visible: true
     visibility: "Windowed"    // Windowed  - FullScreen
-    title: qsTr("Offline Map Example")
+    title: qsTr("Ecies Company Map")
     onXChanged: map.pan(100,200)
-
-
-
     Plugin {
         id: plugin_osm
         preferred: "osm"
@@ -49,85 +46,40 @@ Window {
         center: QtPositioning.coordinate(39,34)
         activeMapType: supportedMapTypes[supportedMapTypes.length - 1]
 
-        MapItemView {
-            model: radarModel
-            delegate:
-                MapCircle{
-                radius: 10000
-                color: "#808000"
-                z:10
-                center {
-                    latitude: latitude
-                    longitude: longitude
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: { parent.color = 'red' }
-                }
-            } // Radar Item
+
+
+        RadarModel {
         } // End Radar Model
 
-        MapItemView {
-            model: radarModel
-            delegate:
-                MapCircle{
-                radius: 100000
-                color: "#556B2F"
-                opacity:0.6
-                z:0
-                center {
-                    latitude: latitude
-                    longitude: longitude
-                }
-            } // Radar Item
+        RadarRangeModel {
         } // End Radar Model
 
         // PLOT MODEL
-        MapItemView {
-            model: plotModel
-            delegate:
-                MapCircle{
-                radius: 3000
-                color: "#FFFF00"
-                z:15
-                center {
-                    latitude: latitude
-                    longitude: longitude
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: { parent.color = 'red' }
-                }
-            } // PLOT Item
+        PlotModel {
         } // End PLOT Model
 
-        MapPolyline {
+        Ruler {
             id: ruler
-            line.color: 'green'
-            line.width: 3
         }// Ruler Model
 
-        Rectangle{
-            id:infoText
-            anchors.bottom: map.bottom
-            anchors.left: map.left
-            color: "black"
-            width:map.width/10
-            height:map.height/25
-            TextArea{
-                text:"Eci"
-            }
+        CoordinateInfoBox {
+            id: infoText
         }
 
-        MouseArea {
-            anchors.fill: map
-            acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MidButton
-           // onMouseXChanged:
-            onClicked: (mouse)=> {
-                           controller.onMapClicked(mouse.button,map.toCoordinate(Qt.point(mouse.x,mouse.y)))
-
-                       }// End Mouse area on Clicked
+        MapMouseArea {
+            id: mapMouseArea
         }// End mousea area map
     }// Map End
+
+    TopMenu {
+        id: topMenu
+    }
+
+
+    RightMenu {
+        id: rightMenu
+    }
+
+
 
 }// Window end
