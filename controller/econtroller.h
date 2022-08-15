@@ -7,28 +7,25 @@
 #include "gui/model/eplotmodel.h"
 #include <QQmlApplicationEngine>
 #include "emapcontroller.h"
-#include <QTimer>
+#include "ewindowcontroller.h"
 
 
 class EController : public QObject
 {
     Q_OBJECT
 public:
-    EController(QQmlApplicationEngine* qmlEngine = nullptr, QObject* parent = nullptr);
+    EController(QObject* parent = nullptr);
 
 public slots:
     void onMapClicked(int pType, const QGeoCoordinate& cordinate);
     void onMapCursorPositionChanged(const QGeoCoordinate& pCoordinate);
 
-
 private:
     EMapController         mMapController;
-    QQmlApplicationEngine* mQmlEngine;
+    QQmlApplicationEngine  mQMLEngine;
     ERadarModel            mRadarModel;
     EPlotModel             mPlotModel;
-    QTimer                 mTestTimer;
-
-
+    EWindowController      mWindowController;
 };
 
 #endif // ECONTROLLER_H

@@ -1,4 +1,4 @@
-QT       += quick location
+QT       += quick location quickcontrols2
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -15,6 +15,7 @@ SOURCES += \
     controller/econtroller.cpp \
     controller/emapcontroller.cpp \
     controller/eradarcontroller.cpp \
+    controller/ewindowcontroller.cpp \
     gui/item/eabstractitem.cpp \
     gui/item/eplotitem.cpp \
     gui/item/eradaritem.cpp \
@@ -27,6 +28,7 @@ HEADERS += \
     controller/econtroller.h \
     controller/emapcontroller.h \
     controller/eradarcontroller.h \
+    controller/ewindowcontroller.h \
     gui/item/eabstractitem.h \
     gui/item/eplotitem.h \
     gui/item/eradaritem.h \

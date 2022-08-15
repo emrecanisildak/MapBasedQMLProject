@@ -10,5 +10,8 @@
         <file>qml/RightMenu.qml</file>
         <file>qml/RightMenuCustomButton.qml</file>
         <file>qml/TopMenu.qml</file>
+        <file>qml/LoginScreen.qml</file>
+        <file>qml/CustomTextField.qml</file>
+        <file>images/logo.png</file>
     </qresource>
 </RCC>

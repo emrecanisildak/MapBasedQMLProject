@@ -1,10 +1,12 @@
 #include "emapcontroller.h"
 #include <QDebug>
+#include <QDir>
 
 EMapController::EMapController(QObject *parent)
     : QObject{parent}
 {
-
+    // Cache folder create
+    QDir::current().mkdir("cache");
 }
 
 void EMapController::onMapClicked(int pType, const QGeoCoordinate &cordinate)

@@ -10,9 +10,10 @@ Window {
     width: 1000
     height: 500
     visible: true
-    visibility: "Windowed"    // Windowed  - FullScreen
+    visibility: "FullScreen"    // Windowed  - FullScreen
     title: qsTr("Ecies Company Map")
     onXChanged: map.pan(100,200)
+
     Plugin {
         id: plugin_osm
         preferred: "osm"
@@ -43,7 +44,7 @@ Window {
         zoomLevel: 8
         minimumZoomLevel: 0
         maximumZoomLevel: 15
-        center: QtPositioning.coordinate(39,34)
+        center: QtPositioning.coordinate(39.32,34)
         activeMapType: supportedMapTypes[supportedMapTypes.length - 1]
 
 
@@ -80,6 +81,6 @@ Window {
         id: rightMenu
     }
 
-
-
 }// Window end
+
+
