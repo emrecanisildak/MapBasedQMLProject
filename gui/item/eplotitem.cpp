@@ -1,10 +1,10 @@
 #include "eplotitem.h"
 #include <chrono>
 
-
-
-EPlotItem::EPlotItem(const QString &pName, int pId, const QGeoCoordinate &pCoordinate, const QString &pSourcePath):
-    EAbstractItem{pName,pId,pCoordinate,pSourcePath}
+EPlotItem::EPlotItem(uint32_t pId, uint32_t pSourceRadar, const QGeoCoordinate &pCoordinate, const AERInfo& pAER):
+    EAbstractItem{pId,pCoordinate},
+    mSourceRadarId{pSourceRadar},
+    mAER{pAER}
 {
     using namespace std::chrono;
     mTimeStamp = duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();

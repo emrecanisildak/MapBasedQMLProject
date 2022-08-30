@@ -6,8 +6,10 @@
 class EPlotItem : public EAbstractItem
 {
 public:
-      EPlotItem(const QString& pName,int pId, const QGeoCoordinate& pCoordinate, const QString& pSourcePath);
+      EPlotItem(uint32_t pId, uint32_t pSourceRadarId, const QGeoCoordinate& pCoordinate,const AERInfo& pAER);
+      uint32_t mSourceRadarId;
       uint64_t mTimeStamp;
+      AERInfo  mAER;
 };
 
 #endif // EPLOTITEM_H

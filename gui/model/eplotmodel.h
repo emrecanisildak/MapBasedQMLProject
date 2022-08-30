@@ -16,7 +16,6 @@ public:
         PlotIdRole,
         LatitudeRole,
         LongitudeRole,
-        SourcePathRole,
     };
 
 
@@ -27,7 +26,6 @@ public:
     void                   removePlot();
     QVariant               data(const QModelIndex &index, int role) const override;
     QHash<int,QByteArray>  roleNames() const override;
-    void                   print();
 
 private:
     std::vector<EPlotItem> mData;

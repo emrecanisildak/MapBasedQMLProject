@@ -4,11 +4,9 @@
 
 ERadarModel::ERadarModel(QObject* parent )
 {
-    mRoles[RadarNameRole]     = "name";
     mRoles[RadarIdRole]       = "id";
     mRoles[LatitudeRole]      = "latitude";
     mRoles[LongitudeRole]     = "longitude";
-    mRoles[SourcePathRole]    = "source";
 }
 
 int ERadarModel::rowCount(const QModelIndex &parent) const
@@ -44,8 +42,7 @@ QVariant ERadarModel::data(const QModelIndex &index, int role) const
 
     const ERadarItem &item = mData.at(index.row());
 
-    if (role == RadarNameRole) return item.mName;
-    else if (role == RadarIdRole) return item.mId;
+    if (role == RadarIdRole) return item.mId;
     else if (role == LatitudeRole) return item.mCoordinate.latitude();
     else if (role == LongitudeRole ) return item.mCoordinate.longitude();
     else return QVariant{};

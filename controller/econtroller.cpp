@@ -1,44 +1,43 @@
 #include "econtroller.h"
 
 #include <QQmlContext>
-#include <QDebug>
-#include <QMouseEvent>
-#include <QTimer>
-#include <QQuickStyle>
+#include <QApplication>
 
 EController::EController(QObject* parent)
     : QObject(parent)
 {
-      QQuickStyle::setStyle("Material");
-
-
     qmlRegisterType<EController>("com.eciescompany.controller", 1, 0, "Controller");
     qmlRegisterType<ERadarModel>("com.eciescompany.radarmodel", 1, 0, "RadarModel");
     qmlRegisterType<EPlotModel>("com.eciescompany.plotmodel", 1, 0, "PlotModel");
     qmlRegisterType<EWindowController>("com.eciescompany.windowcontroller", 1, 0, "WindowController");
+    qmlRegisterType<EMapController>("com.eciescompany.mapcontroller", 1, 0, "MapController");
 
 
     mQMLEngine.rootContext()->setContextProperty("controller",  this);
     mQMLEngine.rootContext()->setContextProperty("radarModel", &mRadarModel);
     mQMLEngine.rootContext()->setContextProperty("plotModel",  &mPlotModel);
+    mQMLEngine.rootContext()->setContextProperty("mapController",&mMapController);
     mQMLEngine.rootContext()->setContextProperty("windowController",&mWindowController);
+
+    // Threads
+    mServiceController = new ServiceController;
+    mServiceController->moveToThread(&mServiceThread);
+    connect(&mServiceThread, &QThread::started, mServiceController, &ServiceController::init);
+    connect(&mServiceThread, &QThread::finished, mServiceController, &QObject::deleteLater);
+    mServiceThread.start();
+
 
 
 
     mWindowController.init(&mQMLEngine);
-    ERadarItem item1("Radar",1,QGeoCoordinate(39.32,34),"asdasd");
+    ERadarItem item1(1,QGeoCoordinate(39.32,34));
     mRadarModel.addRadarItem(item1);
-
-
 }
 
-void EController::onMapClicked(int pType, const QGeoCoordinate& pCoordinate)
+EController::~EController()
 {
-    mMapController.onMapClicked(pType,pCoordinate);
-}
-
-void EController::onMapCursorPositionChanged(const QGeoCoordinate &pCoordinate)
-{
-    mMapController.onMapMouseCursorPositionChanged(pCoordinate);
+    mServiceController->closeServices();
+    mServiceThread.quit();
+    mServiceThread.wait();
 }
 

@@ -1,10 +1,8 @@
 #include "eabstractitem.h"
 
-EAbstractItem::EAbstractItem(const QString &pName, int pId, const QGeoCoordinate &pCoordinate, const QString &pSourcePath):
-    mName{pName},
+EAbstractItem::EAbstractItem(uint32_t pId, const QGeoCoordinate &pCoordinate):
     mId(pId),
-    mCoordinate{pCoordinate},
-    mSourcePath{pSourcePath}
+    mCoordinate{pCoordinate}
 {
 
 }

@@ -14,8 +14,7 @@ class ERadarModel : public QAbstractListModel
     Q_OBJECT
 public:
     enum MyRoles {
-        RadarNameRole = Qt::UserRole + 1,
-        RadarIdRole,
+        RadarIdRole =  Qt::UserRole + 1,
         LatitudeRole,
         LongitudeRole,
         SourcePathRole,

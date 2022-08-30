@@ -12,9 +12,9 @@ MouseArea {
     propagateComposedEvents: true
     acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MidButton
     onPositionChanged:()=>{
-                          controller.onMapCursorPositionChanged(map.toCoordinate(Qt.point(mapMouseArea.mouseX,mapMouseArea.mouseY)))
+                          mapController.onMapMouseCursorPositionChanged(map.toCoordinate(Qt.point(mapMouseArea.mouseX,mapMouseArea.mouseY)))
                       }
     onClicked: (mouse)=> {
-                   controller.onMapClicked(mouse.button,map.toCoordinate(Qt.point(mouse.x,mouse.y)))
+                   mapController.onMapClicked(mouse.button,map.toCoordinate(Qt.point(mouse.x,mouse.y)))
                }// End Mouse area on Clicked
 }

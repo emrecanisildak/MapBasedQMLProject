@@ -27,7 +27,7 @@ void EWindowController::init(QQmlApplicationEngine *qmlEngine)
         }
     });
 
-    mQMLEngine->load(QUrl{QStringLiteral("qrc:/qml/LoginScreen.qml")});
+    mQMLEngine->load(mWindows["MainWindow"]);
 }
 
 bool EWindowController::openWindow(const QString &windowName)
@@ -52,7 +52,8 @@ bool EWindowController::closeWindow(const QString &windowName)
 
 void EWindowController::loginConfirm(const QString &pId, const QString &pPassword)
 {
-    if(mId == pId && mPass == pPassword)
+    if(mId == pId
+            && mPass == pPassword)
     {
         QTimer::singleShot(3000,[this](){emit loginSuccess();});
     }

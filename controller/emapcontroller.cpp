@@ -11,9 +11,9 @@ EMapController::EMapController(QObject *parent)
 
 void EMapController::onMapClicked(int pType, const QGeoCoordinate &cordinate)
 {
-    if(pType == Qt::MidButton)
+    if(pType == Qt::MiddleButton)
     {
-        //qDebug()<<"Orta butona tiklandi";
+       // qDebug()<<"Orta butona tiklandi";
     }
 
     else if(pType == Qt::LeftButton)
@@ -22,11 +22,11 @@ void EMapController::onMapClicked(int pType, const QGeoCoordinate &cordinate)
     }
     else
     {
-       // qDebug()<<"Right Button Clicked";
+     //   qDebug()<<"Right Button Clicked";
     }
 }
 
 void EMapController::onMapMouseCursorPositionChanged(const QGeoCoordinate &pCoordinate)
 {
-    //qDebug()<<"Mouse cursor position"<<pCoordinate;
+ //   qDebug()<<"Mouse cursor position"<<pCoordinate;
 }

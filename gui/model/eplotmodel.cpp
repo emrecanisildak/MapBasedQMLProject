@@ -10,7 +10,6 @@ EPlotModel::EPlotModel(QObject* parent )
     mRoles[PlotIdRole]        = "id";
     mRoles[LatitudeRole]      = "latitude";
     mRoles[LongitudeRole]     = "longitude";
-    mRoles[SourcePathRole]    = "source";
 
     connect(&mPlotTimer,&QTimer::timeout,
             this,[&](){removePlot();}) ;
@@ -63,10 +62,3 @@ QHash<int, QByteArray> EPlotModel::roleNames() const
     return mRoles;
 }
 
-void EPlotModel::print()
-{
-    for(auto item : mData)
-    {
-        qDebug()<<item.mCoordinate;
-    }
-}

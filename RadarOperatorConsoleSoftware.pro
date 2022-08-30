@@ -16,11 +16,14 @@ SOURCES += \
     controller/emapcontroller.cpp \
     controller/eradarcontroller.cpp \
     controller/ewindowcontroller.cpp \
+    controller/servicecontroller.cpp \
     gui/item/eabstractitem.cpp \
     gui/item/eplotitem.cpp \
     gui/item/eradaritem.cpp \
+    gui/item/etrackitem.cpp \
     gui/model/eplotmodel.cpp \
     gui/model/eradarmodel.cpp \
+    gui/model/etrackmodel.cpp \
     main.cpp
 
 HEADERS += \
@@ -29,11 +32,14 @@ HEADERS += \
     controller/emapcontroller.h \
     controller/eradarcontroller.h \
     controller/ewindowcontroller.h \
+    controller/servicecontroller.h \
     gui/item/eabstractitem.h \
     gui/item/eplotitem.h \
     gui/item/eradaritem.h \
+    gui/item/etrackitem.h \
     gui/model/eplotmodel.h \
-    gui/model/eradarmodel.h
+    gui/model/eradarmodel.h \
+    gui/model/etrackmodel.h
 
 FORMS +=
 

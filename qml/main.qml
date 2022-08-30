@@ -10,7 +10,7 @@ Window {
     width: 1000
     height: 500
     visible: true
-    visibility: "FullScreen"    // Windowed  - FullScreen
+    visibility: "Windowed"    // Windowed  - FullScreen
     title: qsTr("Ecies Company Map")
     onXChanged: map.pan(100,200)
 
