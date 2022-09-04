@@ -3,36 +3,36 @@
 
 #include <QDebug>
 
-ServiceController::ServiceController(QObject *parent):
+EServiceController::EServiceController(QObject *parent):
     QObject(parent)
 {
 
 }
 
-void ServiceController::closeServices()
+void EServiceController::closeServices()
 {
     closeMapService();
 }
 
-void ServiceController::init()
+void EServiceController::init()
 {
     openMapService();
 }
 
-void ServiceController::openMapService()
+void EServiceController::openMapService()
 {
-    qInfo() <<"Map Service Run!";
+    qInfo() <<"Map Service Run! "<<QApplication::applicationDirPath();
 
 
-    std::string mapPath =  "cd "+ QApplication::applicationDirPath().toStdString();
-    system(mapPath.c_str());
-    system("cd ..");
-    system("cd map");
-    system("tessella mbtiles://./map.mbtiles --flip_y");
+//    std::string mapPath =  "cd "+ QApplication::applicationDirPath().toStdString();
+//    system(mapPath.c_str());
+//    system("cd ..");
+//    system("cd map");
+//    system("tessella mbtiles://./map.mbtiles --flip_y");
 }
 
-void ServiceController::closeMapService()
+void EServiceController::closeMapService()
 {
-    system("Taskkill /F /IM node.exe");
+  //  system("Taskkill /F /IM node.exe");
 
 }

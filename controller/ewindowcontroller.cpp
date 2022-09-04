@@ -9,7 +9,7 @@ EWindowController::EWindowController(QObject *parent)
 
 {
     mWindows.insert(std::make_pair(QString{"MainWindow"},QUrl{QStringLiteral("qrc:/qml/main.qml") } ));
-    mWindows.insert(std::make_pair(QString{"LoginScreen"},QUrl{QStringLiteral("qrc:/qml/LoginScreen.qml") } ));
+    mWindows.insert(std::make_pair(QString{"LoginScreen"},QUrl{QStringLiteral("qrc:/qml/screen/LoginScreen.qml") } ));
 
 
 }

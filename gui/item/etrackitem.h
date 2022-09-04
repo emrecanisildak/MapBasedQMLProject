@@ -14,12 +14,16 @@ enum class TrackStatus
 class ETrackItem : public EAbstractItem
 {
 public:
-    ETrackItem(uint32_t pId, uint32_t pSourceRadarId, const QGeoCoordinate& pCoordinate,const AERInfo& pAER, int pSpeed);
+    ETrackItem(uint32_t pId, uint32_t pSourceRadarId,TrackStatus pTrackStatus,
+               const QGeoCoordinate& pCoordinate,const AERInfo& pAER, int pSpeed);
 
-    uint32_t mSourceRadarId;
-    uint64_t mTimeStamp;
-    AERInfo  mAER;
-    int      mSpeed;
+    QString getInfoText() const;
+
+    uint32_t    mSourceRadarId;
+    uint64_t    mTimeStamp;
+    AERInfo     mAER;
+    int         mSpeed;
+    TrackStatus mTrackStatus;
 
 };
 

@@ -1,4 +1,4 @@
-QT       += quick location quickcontrols2
+QT       += quick location quickcontrols2 charts
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 

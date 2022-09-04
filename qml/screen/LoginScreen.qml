@@ -6,6 +6,8 @@ import QtPositioning 5.12
 import QtQml 2.12
 import QtQuick.Layouts 1.0
 
+import "../customitem"
+
 
 Window{
     id:loginScreen

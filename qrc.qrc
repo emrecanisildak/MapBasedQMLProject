@@ -1,17 +1,26 @@
 <RCC>
     <qresource prefix="/">
         <file>qml/main.qml</file>
-        <file>qml/RadarRangeModel.qml</file>
-        <file>qml/PlotModel.qml</file>
-        <file>qml/CoordinateInfoBox.qml</file>
         <file>qml/MapMouseArea.qml</file>
-        <file>qml/Ruler.qml</file>
-        <file>qml/RadarModel.qml</file>
-        <file>qml/RightMenu.qml</file>
-        <file>qml/RightMenuCustomButton.qml</file>
-        <file>qml/TopMenu.qml</file>
-        <file>qml/LoginScreen.qml</file>
-        <file>qml/CustomTextField.qml</file>
         <file>images/logo.png</file>
+        <file>qml/menu/RightMenu.qml</file>
+        <file>qml/menu/TopMenu.qml</file>
+        <file>qml/customitem/CoordinateInfoBox.qml</file>
+        <file>qml/customitem/CustomTextField.qml</file>
+        <file>qml/menu/RightMenuCustomButton.qml</file>
+        <file>qml/model/PlotModel.qml</file>
+        <file>qml/model/RadarModel.qml</file>
+        <file>qml/model/RadarRangeModel.qml</file>
+        <file>qml/model/RulerModel.qml</file>
+        <file>qml/screen/LoginScreen.qml</file>
+        <file>qml/model/TrackModel.qml</file>
+        <file>qml/scopes/PPIScope.qml</file>
+        <file>qml/menu/LeftMenu.qml</file>
+        <file>qml/customitem/CustomLeftMenuButton.qml</file>
+        <file>images/leftmenuexpand.png</file>
+        <file>images/leftmenuradar.png</file>
+        <file>images/leftmenusettings.png</file>
+        <file>images/leftmenumap.png</file>
+        <file>images/leftmenulogout.png</file>
     </qresource>
 </RCC>

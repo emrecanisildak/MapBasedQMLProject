@@ -7,16 +7,18 @@ import QtQml 2.12
 
 Rectangle{
     id:infoText
+    property string infoBoxColor : "#16213E"
+    property string infoBoxTextColor : "white"
     anchors.bottom: map.bottom
-    anchors.left: map.left
+    anchors.right: map.right
     anchors.bottomMargin: 5
-    anchors.leftMargin: 5
+    anchors.rightMargin: 5
     width:coordinateInfoTextArea.contentWidth + 15
     height:coordinateInfoTextArea.contentHeight + 10
-    color: "black"
+    color: infoBoxColor
     TextArea{
         id:coordinateInfoTextArea
         text: ""+ map.toCoordinate(Qt.point(mapMouseArea.mouseX,mapMouseArea.mouseY))
-        color: "#21be2b"
+        color: infoBoxTextColor
     }
 }

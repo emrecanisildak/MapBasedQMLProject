@@ -7,6 +7,7 @@
 
 #include "gui/model/eradarmodel.h"
 #include "gui/model/eplotmodel.h"
+#include "gui/model/etrackmodel.h"
 #include <QQmlApplicationEngine>
 #include "emapcontroller.h"
 #include "ewindowcontroller.h"
@@ -27,14 +28,17 @@ private:
 
     QQmlApplicationEngine  mQMLEngine;
     EMapController         mMapController;
+
     ERadarModel            mRadarModel;
     EPlotModel             mPlotModel;
+    ETrackModel            mTrackModel;
+
     EWindowController      mWindowController;
 
 
     // Service handler
     QThread                mServiceThread;
-    ServiceController*      mServiceController;
+    EServiceController*    mServiceController;
 };
 
 #endif // ECONTROLLER_H

@@ -3,11 +3,11 @@
 
 #include <QObject>
 
-class ServiceController : public QObject
+class EServiceController : public QObject
 {
     Q_OBJECT
 public:
-    ServiceController(QObject* parent = nullptr);
+    EServiceController(QObject* parent = nullptr);
 
 
 public slots:

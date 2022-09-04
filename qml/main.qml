@@ -1,9 +1,16 @@
-import QtQuick 2.12
+import QtQuick 2.4
 import QtQuick.Window 2.12
 import QtLocation 5.12
 import QtQuick.Controls 2.12
 import QtPositioning 5.12
 import QtQml 2.12
+import QtCharts 2.3
+
+import "menu"
+import "model"
+import "customitem"
+import "scopes"
+
 
 Window {
     id:mainWindow
@@ -59,12 +66,19 @@ Window {
         PlotModel {
         } // End PLOT Model
 
-        Ruler {
+        RulerModel {
             id: ruler
         }// Ruler Model
 
+        // TrackModel
+        TrackModel {
+        }
+
         CoordinateInfoBox {
             id: infoText
+            infoBoxColor : "#16213E"
+            infoBoxTextColor : "white"
+
         }
 
         MapMouseArea {
@@ -72,14 +86,23 @@ Window {
         }// End mousea area map
     }// Map End
 
-    TopMenu {
-        id: topMenu
+    LeftMenu {
+        id: leftMenu
+        height: mainWindow.height
+        anchors.top: parent.top
+        anchors.left: parent.left
+        menuColor: "#16213E"
+        menuWidth : 80
+        isMenuExpand: false
     }
 
 
-    RightMenu {
-        id: rightMenu
-    }
+    //    PPIScope {
+    //    }
+
+
+
+
 
 }// Window end
 

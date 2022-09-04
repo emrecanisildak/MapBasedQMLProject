@@ -8,7 +8,6 @@ import QtQml 2.12
 MenuBar {
     id: menuBar
     z:500
-    width:map.width
 
     Menu { title: qsTr("File") }
     Menu { title: qsTr("Edit") }
@@ -19,7 +18,7 @@ MenuBar {
         id: menuBarItem
 
         onTriggered: ()=>{
-                         console.log("Clicked")
+                         console.log("Clicked Menu Bar Item")
                      }
 
         contentItem: Text {
