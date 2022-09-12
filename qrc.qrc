@@ -7,7 +7,6 @@
         <file>qml/menu/TopMenu.qml</file>
         <file>qml/customitem/CoordinateInfoBox.qml</file>
         <file>qml/customitem/CustomTextField.qml</file>
-        <file>qml/menu/RightMenuCustomButton.qml</file>
         <file>qml/model/PlotModel.qml</file>
         <file>qml/model/RadarModel.qml</file>
         <file>qml/model/RadarRangeModel.qml</file>
